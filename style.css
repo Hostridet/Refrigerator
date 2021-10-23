@@ -22,12 +22,6 @@ body {
     margin-top: 5%;
     position: relative;
 }
-.main img {
-    display: block;
-    margin: 0 auto;
-    width: 550px;
-    height: 550px;
-}
 .buttons {
     position: relative;
     margin: 0 auto;
@@ -41,7 +35,7 @@ body {
     height:50px;
     width:180px;
     border-radius: 25px;
-    margin-right: 5px;
+    margin-left: 5px;
     background: linear-gradient(90deg,#FF8C00,#FF4500);
     box-shadow: 0 0 10px #000;
 }
@@ -49,7 +43,7 @@ body {
     height:50px;
     width:180px;
     border-radius: 25px;
-    margin-left:  5px;
+    margin-right:  5px;
     background: linear-gradient(90deg,#FF8C00,#FF4500);
     box-shadow: 0 0 10px #000;
 }
@@ -61,12 +55,17 @@ body {
 }
 
 .field {
-    position: absolute;
-    opacity: 100%;
-    width: 200px;
-    height: 200px;
-    background: #FF8C00;
+    position: relative;
     display: grid;
-    left: 43%;
-    top: 70%;
+    grid-template-columns: repeat(5, 100px);
+    grid-template-rows: repeat(5,100px);
+    justify-content: center;
+    margin-bottom: 30px;
+}
+.field div {
+    border: 2px solid #000000;
+}
+.image {
+    width: 100px;
+    height: 100px;
 }
