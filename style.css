@@ -64,8 +64,9 @@ body {
     justify-content: center;
     margin-bottom: 30px;
 }
-.fields {
-    box-sizing: border-box;
+.field div:hover {
+    box-shadow: 0 0 25px #FF4500;
+    border: 1px solid #fff;
 }
 .image {
     width: 100px;
@@ -81,7 +82,7 @@ body {
     }
     20%
     {
-        box-shadow: 0 0 10px #000;
+        box-shadow: 0 0 13px #000;
     }
     40%,100%
     {
