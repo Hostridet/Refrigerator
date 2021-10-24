@@ -1,6 +1,8 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: fantasy, Arial;
 }
 body {
     background: url("image/back.png");
@@ -62,10 +64,28 @@ body {
     justify-content: center;
     margin-bottom: 30px;
 }
-.field div {
-    border: 2px solid #000000;
+.fields {
+    box-sizing: border-box;
 }
 .image {
     width: 100px;
     height: 100px;
+    border: 3px solid #000000;
+    animation: animate 4s ease-in-out infinite;
+
 }
+@keyframes animate {
+    0%
+    {
+        box-shadow: 0 0 5px #000;
+    }
+    20%
+    {
+        box-shadow: 0 0 10px #000;
+    }
+    40%,100%
+    {
+        box-shadow: 0 0 5px #000;
+    }
+}
+
