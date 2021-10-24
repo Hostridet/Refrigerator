@@ -9,13 +9,16 @@ createFields();
 //начало игры: перемешивание всех полей и разрешение нажатие наполя
 function startGame()
 {
-    isGameStarted = true;
-    randomSort();
+    if (!isGameStarted)
+    {
+        isGameStarted = true;
+        randomSort();
+    }
 }
 //Псевдо-рандомно меняет поля
 function randomSort()
 {
-    for(let i = 0; i < 1; i++)
+    for(let i = 0; i < 3; i++)
     {
         Exchange(getRandomInt(25));
     }
@@ -32,7 +35,6 @@ function click(e)
         let i = 0;
         while (fields[i] !== this)
             i++;
-        console.log(currentPos);
         Exchange(i);
     }
 }
@@ -40,28 +42,27 @@ function click(e)
 function Exchange(x)
 {
     let new_x = x;
-    while(new_x > 5) {
+    while(new_x >= 5) {
         new_x = new_x - 5;
     }
+    console.log(new_x);
     for(let i = 0; i <= 24; i++)
     {
         if (i % 5 === new_x)
         {
-            if (currentPos[i] === "-")
+            let image;
+            if(currentPos[i] === false)
             {
-                console.log(currentPos[i]);
-                let image = createImage(posTwo);
-                deleteAllChild(fields[i]);
-                fields[i].appendChild(image);
-                currentPos[i] = "+";
+                image = createImage(posTwo);
+                currentPos[i] = true;
             }
-            if (currentPos[i] === "+")
+            else if (currentPos[i] === true)
             {
-                let image = createImage(posOne);
-                deleteAllChild(fields[i]);
-                fields[i].appendChild(image);
-                currentPos[i] = "-";
+                image = createImage(posOne);
+                currentPos[i] = false;
             }
+            deleteAllChild(fields[i]);
+            fields[i].appendChild(image);
         }
     }
     if ((x >= 0) && (x <= 4))
@@ -74,10 +75,20 @@ function Exchange(x)
         changePlaces(15, 19);
     if ((x >= 20) && (x <= 24))
         changePlaces(20, 24)
+
+    changePlaces(x, x);
 }
 function changePlaces(first, sec) {
     for (first; first <= sec; first++) {
-        let image = createImage(posTwo);
+        let image;
+        if (currentPos[first] === false) {
+            image = createImage(posTwo);
+            currentPos[first] = true;
+        }
+        else if (currentPos[first] === true) {
+            image = createImage(posOne);
+            currentPos[first] = false;
+        }
         deleteAllChild(fields[first]);
         fields[first].appendChild(image);
     }
@@ -102,7 +113,7 @@ function createFields()
     });
     isGameStarted = false;
     for (let i = 0; i <= 24; i++)
-        currentPos[i] = "-";
+        currentPos[i] = false;
 }
 function fullElements(item)
 {
